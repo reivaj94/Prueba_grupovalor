@@ -18,7 +18,10 @@ class m180319_043302_cotizacion_Articulo extends Migration
                 "cantidad"          =>$this->integer(),
                 "total"             =>$this->decimal(10,2),
                 "PRIMARY KEY(id_cotizacion, id_articulo)"
-            ]);
+            ]
+
+
+        );
 
     /**  ---------------------------
          ----ManytoMany-------------
@@ -29,7 +32,14 @@ class m180319_043302_cotizacion_Articulo extends Migration
 
     $this->createIndex('index_id_articulo-cotizacion_Articulo', 'cotizacion_Articulo', 'id_articulo');
     $this->addForeignKey('fk_id_articulo-cotizacion_Articulo', 'cotizacion_Articulo', 'id_articulo', 'articulo', 'id', 'restrict', 'cascade');
-
+    
+    $this->batchInsert('cotizacion_Articulo', ['id_articulo', 'id_cotizacion', 'cantidad',"total"], [
+            [2,1, 1, 270],            
+            [4,1, 2, 240],
+            [6,1, 1, 190],
+            [7,1, 1, 80],
+            
+        ]);
     }
 
     /**

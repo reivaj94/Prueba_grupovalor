@@ -18,6 +18,20 @@ class m180318_131533_articulo extends Migration
             "tipo"              =>$this->String (30)->notNull(),
             "precio"            =>$this->money()->notNull()
         ]);
+         $this->batchInsert('articulo', ['descripcion', 'tipo', 'precio'], [
+            ['Case1', 'Hardware', '230'],
+            ['Case2', 'Hardware', '270'],
+            ['RAM-2G', 'Hardware', '120'],
+            ['RAM-4G', 'Hardware', '120'],
+            ['SSD-512G', 'Hardware', '120'],
+            ['Motherboard-Intel445', 'Hardware', '190'],
+            ['HDD-1T', 'Hardware', '80'],
+            ['Case3', 'Hardware', '90'],
+            ['Windows7', 'Software', '70'],
+            ['Microsoft Office - 2016', 'Software', '55'],
+            ['Adobe Photoshop CC', 'Software', '80'],
+            ['Corel Draw', 'Software', '75'],
+        ]);
     }
 
     /**

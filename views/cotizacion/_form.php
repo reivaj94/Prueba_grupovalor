@@ -23,8 +23,6 @@ use app\models\Paquete;
 
     <?= $form->field($model, 'ruc')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'total')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'impuesto')->textInput(['maxlength' => true]) ?>
 
     <div class="row">
@@ -125,7 +123,7 @@ use app\models\Paquete;
                                     ?>
                                 </div>
                                 <div class="col-sm-6">
-                                    <?= $form->field($auxCotizacionArticulo, "[{$i}]cantidad")->textInput(['maxlength' => true]) ?>
+                                    <?= $form->field($auxCotizacionPaquete, "[{$i}]cantidad")->textInput(['maxlength' => true]) ?>
                                 </div>
                                 
                             </div>

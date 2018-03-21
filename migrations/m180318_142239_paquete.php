@@ -18,6 +18,13 @@ class m180318_142239_paquete extends Migration
             "descuento"         =>$this->decimal(3,2)->notNull(),
             "total"             =>$this->money()->notNull()
         ]);
+        $this->batchInsert('paquete', ['descripcion', 'descuento', 'total'], [
+            ['Combo de Hardware', 10, 780],
+            ['Combo de Software', 10, 125],
+            ['Combo de Software power', 10, 155],
+            ['Combo de Hardware power', 10, 155]
+            
+        ]);
     }
 
     /**

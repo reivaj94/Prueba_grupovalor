@@ -9,6 +9,7 @@ use app\models\CotizacionArticulo;
 use app\models\CotizacionPaquete;
 use app\models\Model;
 use app\models\Articulo;
+use app\models\Paquete;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -83,23 +84,27 @@ class CotizacionController extends Controller
                     $totalArticulo = 0;
                     foreach ($modelsCotizacionArticulo as $auxCotizacionArticulo) {
                         $articulo = Articulo::findOne($auxCotizacionArticulo->id_articulo);
-                        $totalArticulo += $articulo->precio * $auxCotizacionArticulo->cantidad;
-                        $auxCotizacionArticulo->id_cotizacion = $model->id;
-                        $auxCotizacionArticulo->total = $articulo->precio;
-                        if (! ($flag = $auxCotizacionArticulo->save(false))) {
-                            $transaction->rollBack();
-                            break;
+                        if($articulo){
+                            $totalArticulo += $articulo->precio * $auxCotizacionArticulo->cantidad;
+                            $auxCotizacionArticulo->id_cotizacion = $model->id;
+                            $auxCotizacionArticulo->total = $articulo->precio;
+                            if (! ($flag = $auxCotizacionArticulo->save(false))) {
+                                $transaction->rollBack();
+                                break;
+                            }
                         }
                     }
                     $totalPaquete = 0;
                     foreach ($modelsCotizacionPaquete as $auxCotizacionPaquete) {
                         $paquete = Paquete::findOne($auxCotizacionPaquete->id_paquete);
-                        $totalPaquete += $paquete->precio * $auxCotizacionPaquete->cantidad;
-                        $auxCotizacionPaquete->id_cotizacion = $model->id;
-                        $auxCotizacionPaquete->total = $paquete->precio;
-                        if (! ($flag = $auxCotizacionArticulo->save(false))) {
-                            $transaction->rollBack();
-                            break;
+                        if($paquete){
+                            $totalPaquete += $paquete->total* $auxCotizacionPaquete->cantidad;;
+                            $auxCotizacionPaquete->id_cotizacion = $model->id;
+                            $auxCotizacionPaquete->total = $paquete->total;
+                            if (! ($flag = $auxCotizacionPaquete->save(false))) {
+                                $transaction->rollBack();
+                                break;
+                            }
                         }
                     }
                 }

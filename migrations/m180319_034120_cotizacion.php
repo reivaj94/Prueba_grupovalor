@@ -20,6 +20,11 @@ class m180319_034120_cotizacion extends Migration
             "total"               =>$this->money()->notNull(),
             "impuesto"            =>$this->Decimal(5,2)
         ]);
+        $this->batchInsert('cotizacion', ['id','nombreCliente', 'nombreVendedor', 'ruc',"total","impuesto"], [
+            [1,"Javier Moreno", "Daniel","xas-817", 819,5],            
+            
+            
+        ]);
     }
 
     /**

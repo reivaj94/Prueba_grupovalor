@@ -30,6 +30,22 @@ class m180318_153539_articulo_Paquete extends Migration
     $this->createIndex('index_id_paquete', 'articulo_Paquete', 'id_paquete');
     $this->addForeignKey('fk_id_paquete', 'articulo_Paquete', 'id_paquete', 'paquete', 'id', 'restrict', 'cascade');
 
+    $this->batchInsert('articulo_Paquete', ['id_articulo', 'id_paquete', 'cantidad',"precio"], [
+            [2,1, 1, 270],            
+            [4,1, 2, 240],
+            [6,1, 1, 190],
+            [7,1, 1, 80],
+            [9,2, 1, 70],
+            [10,2, 1, 55],
+            [11,3, 1, 80],
+            [12,3, 1, 75],
+            [1,4, 1, 230],
+            [4,4, 4, 120],
+            [6,4, 1, 190],
+            [7,4, 1, 80],
+            [9,4, 1, 70],
+
+        ]);
     }
 
 
