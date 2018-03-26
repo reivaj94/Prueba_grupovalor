@@ -22,13 +22,13 @@ Composer
 
 <h2>Instalacion Dependencias</h2>
 <ul>
-  <li>Abrir una consola en la terminal o consola y ejecutar el comando</li>
+  <h3>Abrir una consola en la terminal o consola y ejecutar el comando</h3>
   <li>composer install</li>
 </ul>
 
 <h2>Base de Datos </h2>
 <ul>
-  <li>crear una base de datos con los siguientes parametros </li>
+  <h3>crear una base de datos con los siguientes parametros </h3>
   <li>nombre = db_prueba_valorca</li>
   <li>usuario = root</li>
   <li>contrasena = dejar vacio</li>
@@ -36,6 +36,13 @@ Composer
 
 <h2>Realiza migraciones </h2>
 <ul>
-  <li>debe ejecutar en la consola o terminal </li>
+  <h3>debe ejecutar en la consola o terminal </h3>
   <li>php yii migrate</li>
+</ul>
+
+<h2>Ver la prueba </h2>
+<ul>
+  <h3>Abrir una en la consola o terminal el directorio principal acceder a web y ejecutar el comando</h3>
+  <li>php -S localhost:8000</li>
+  <li>Acceder desde el servidor a la direccion localhost:8000</li>
 </ul>
